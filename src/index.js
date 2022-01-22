@@ -1,25 +1,33 @@
 import { ColorModeScript } from '@chakra-ui/react';
 import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
-import Home from 'pages/Home/Home';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
-import { ChakraProvider, theme } from '@chakra-ui/react';
-import {
-  BrowserRouter,
-  Routes,
-  Route
-} from "react-router-dom";
+import { ChakraProvider, Box } from '@chakra-ui/react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Home from 'pages/Home/Home';
+import { Navbar } from 'components/Navbar/Navbar';
+import { Footer } from 'components/Footer/Footer';
+
+import theme from 'utils/theme'
+
+import "@fontsource/six-caps/400.css"
+import "@fontsource/pathway-gothic-one/400.css"
 
 ReactDOM.render(
   <StrictMode>
     <ColorModeScript />
     <ChakraProvider theme={theme}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </BrowserRouter>
+      <Box position="relative" width="100vw" height="100vh">
+        <Navbar />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+          </Routes>
+        </BrowserRouter>
+        <Footer />
+      </Box>
     </ChakraProvider>
   </StrictMode>,
   document.getElementById('root')
